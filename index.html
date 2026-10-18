@@ -1214,10 +1214,288 @@
       margin-bottom: 40px;
     }
 
+    /* CONTACT GRID CONTAINER */
+    .contact-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    /* ENTER MUTED LINK */
+    .enter-muted-link {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.3s;
+      padding: 8px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .enter-muted-link:hover {
+      color: var(--gold-bright);
+    }
+
+    /* MOBILE NAVIGATION DRAWER & BACKDROP */
+    .mobile-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .mobile-drawer-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(340px, 86vw);
+      background: #050b09;
+      border-left: 1px solid var(--border-gold);
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      overflow-y: auto;
+      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.9);
+    }
+
+    .mobile-drawer.active {
+      transform: translateX(0);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .mobile-drawer-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-teal);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-drawer-close:hover {
+      background: var(--red-flame);
+      border-color: var(--red-flame);
+      transform: rotate(90deg);
+    }
+
+    .mobile-drawer-section {
+      margin-bottom: 24px;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .mobile-nav-item:hover, .mobile-nav-item.active {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--border-gold);
+      color: var(--gold-bright);
+    }
+
+    .mobile-nav-item i {
+      width: 22px;
+      color: var(--gold-bright);
+      font-size: 1.1rem;
+    }
+
+    .mobile-drawer-footer {
+      margin-top: auto;
+      padding-top: 15px;
+    }
+
+    /* GALLERY LIGHTBOX */
+    .gallery-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(18px);
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .gallery-lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 920px;
+      width: 100%;
+      background: #081411;
+      border: 2px solid var(--gold-bright);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 40px var(--gold-glow);
+      transform: scale(0.92);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--border-gold);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: var(--transition-smooth);
+    }
+
+    .lightbox-close:hover {
+      background: var(--red-flame);
+      border-color: var(--red-flame);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-content img {
+      width: 100%;
+      max-height: 65vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lightbox-info {
+      padding: 22px 26px;
+      background: linear-gradient(180deg, #091a15 0%, #030706 100%);
+    }
+
+    .lightbox-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 8px 0 4px;
+    }
+
+    .lightbox-sub {
+      color: var(--gold-light);
+      font-size: 1rem;
+    }
+
+    /* RTL TWEAKS FOR URDU */
+    body.lang-ur .hero-content,
+    body.lang-ur .featured-package-card,
+    body.lang-ur .pkg-inclusions-grid,
+    body.lang-ur .why-card,
+    body.lang-ur .faq-pill-header {
+      text-align: right;
+    }
+
+    body.lang-ur .pkg-inclusion-item {
+      direction: rtl;
+      text-align: right;
+    }
+
+    body.lang-ur .mobile-drawer {
+      right: auto;
+      left: 0;
+      transform: translateX(-100%);
+      border-left: none;
+      border-right: 1px solid var(--border-gold);
+    }
+
+    body.lang-ur .mobile-drawer.active {
+      transform: translateX(0);
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 880px) {
+      .contact-grid-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
     @media (max-width: 768px) {
       .footer-grid { grid-template-columns: 1fr; }
       nav.desktop-nav { display: none; }
       .mobile-menu-trigger { display: block; }
+    }
+
+    @media (max-width: 680px) {
+      .header-actions .btn-header-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header-actions .lang-switcher-wrap {
+        display: none;
+      }
+      .brand-title {
+        font-size: 1.45rem;
+      }
+      header.site-header {
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
@@ -1254,6 +1532,12 @@
         <i class="fa-solid fa-volume-high"></i>
         <span>ENTER WITH SOUND</span>
       </button>
+
+      <div style="margin-top: 14px;">
+        <button id="enter-muted-btn" class="enter-muted-link" title="নিঃশব্দে সাইট ব্রাউজ করুন">
+          <i class="fa-solid fa-volume-xmark"></i> <span data-key="enter_muted">নিঃশব্দে প্রবেশ করুন (Enter Muted)</span>
+        </button>
+      </div>
       
       <p class="entry-footnote">
         <i class="fa-solid fa-bolt"></i> ব্রাউজার নীতি অনুযায়ী ক্লিকে তালবিয়া অডিও এবং সিনেমাটিক দৃশ্য চালু হবে
@@ -1304,11 +1588,76 @@
       <!-- Booking CTA -->
       <a href="#" class="btn-header-cta" onclick="switchPage('contact')" data-key="header_btn_booking">বুকিং করুন</a>
       
-      <button class="mobile-menu-trigger" id="mobile-toggle">
+      <button class="mobile-menu-trigger" id="mobile-toggle" aria-label="Toggle mobile menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
   </header>
+
+  <!-- 📱 MOBILE NAVIGATION DRAWER & BACKDROP -->
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop" onclick="toggleMobileMenu(false)"></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+    <div class="mobile-drawer-header">
+      <div class="brand-wrap">
+        <div class="brand-emblem" style="width: 38px; height: 38px; font-size: 1.15rem;">
+          <i class="fa-solid fa-kaaba"></i>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title" style="font-size: 1.5rem;">
+            <span class="rocker-gold">Rahmaniya</span>
+          </span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" onclick="toggleMobileMenu(false)" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Language Selector -->
+    <div class="mobile-drawer-section">
+      <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; color: var(--gold-light); margin-bottom: 8px;">LANGUAGE / ভাষা</div>
+      <div class="lang-switcher-wrap" style="width: 100%; justify-content: space-around;">
+        <button class="lang-btn active" onclick="setLanguage('bn'); toggleMobileMenu(false);">বাংলা</button>
+        <button class="lang-btn" onclick="setLanguage('ur'); toggleMobileMenu(false);">اردو</button>
+        <button class="lang-btn" onclick="setLanguage('en'); toggleMobileMenu(false);">EN</button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <nav class="mobile-nav-links">
+      <a href="#" class="mobile-nav-item active" onclick="switchPage('home'); toggleMobileMenu(false);" data-key="nav_home">
+        <i class="fa-solid fa-house"></i> <span>হোম</span>
+      </a>
+      <a href="#" class="mobile-nav-item" onclick="switchPage('umrah'); toggleMobileMenu(false);" data-key="nav_umrah">
+        <i class="fa-solid fa-kaaba"></i> <span>উমরাহ প্যাকেজ</span>
+      </a>
+      <a href="#" class="mobile-nav-item" onclick="switchPage('hajj'); toggleMobileMenu(false);" data-key="nav_hajj">
+        <i class="fa-solid fa-mosque"></i> <span>হজ্জ প্যাকেজ</span>
+      </a>
+      <a href="#" class="mobile-nav-item" onclick="switchPage('about'); toggleMobileMenu(false);" data-key="nav_about">
+        <i class="fa-solid fa-users"></i> <span>আমাদের সম্পর্কে</span>
+      </a>
+      <a href="#" class="mobile-nav-item" onclick="switchPage('gallery'); toggleMobileMenu(false);" data-key="nav_gallery">
+        <i class="fa-solid fa-images"></i> <span>গ্যালারি</span>
+      </a>
+      <a href="#" class="mobile-nav-item" onclick="switchPage('contact'); toggleMobileMenu(false);" data-key="nav_contact">
+        <i class="fa-solid fa-phone"></i> <span>যোগাযোগ</span>
+      </a>
+    </nav>
+
+    <!-- Quick Call & WhatsApp CTAs inside Drawer -->
+    <div class="mobile-drawer-footer">
+      <a href="#" class="seal-btn seal-btn-gold" style="width: 100%; justify-content: center; margin-bottom: 10px;" onclick="switchPage('contact'); toggleMobileMenu(false);" data-key="header_btn_booking">
+        <i class="fa-solid fa-calendar-check"></i> <span>বুকিং করুন</span>
+      </a>
+      <a href="https://wa.me/919153609484?text=আসসালামু%20আলাইকুম,%20উমরাহ%20প্যাকেজ%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="seal-btn" style="width: 100%; justify-content: center;">
+        <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp চ্যাট</span>
+      </a>
+      <div style="text-align: center; margin-top: 15px; font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);">
+        হটলাইন: +91 9153609484 / +91 7003596251
+      </div>
+    </div>
+  </aside>
 
   <!-- ========================================================== -->
   <!-- 📄 PAGE 1: HOME (হোম)                                      -->
@@ -1727,8 +2076,8 @@
       <h1 class="hero-h1-gothic">
         <span class="rocker-white">UMRAH</span> <span class="rocker-crimson">2027.</span>
       </h1>
-      <h2 class="crisp-gold-bn" style="font-size: 2.5rem;">উমরাহ ২০২৭ — পূর্ণাঙ্গ প্যাকেজ বিবরণী</h2>
-      <p class="whisper-quote" style="font-size: 1.4rem;">"সম্পূর্ণ প্যাকেজ মাত্র ₹95,000/- — আর কোনো অতিরিক্ত বা গোপন খরচ নেই"</p>
+      <h2 class="crisp-gold-bn" style="font-size: 2.5rem;" data-key="umrah_h2">উমরাহ ২০২৭ — পূর্ণাঙ্গ প্যাকেজ বিবরণী</h2>
+      <p class="whisper-quote" style="font-size: 1.4rem;" data-key="umrah_quote">"সম্পূর্ণ প্যাকেজ মাত্র ₹95,000/- — আর কোনো অতিরিক্ত বা গোপন খরচ নেই"</p>
     </div>
 
     <section class="content-section" style="padding-top: 0;">
@@ -1763,8 +2112,8 @@
       <h1 class="hero-h1-gothic">
         <span class="rocker-white">HAJJ.</span> <span class="rocker-crimson">THE SACRED PILLAR.</span>
       </h1>
-      <h2 class="crisp-gold-bn" style="font-size: 2.5rem;">হজ্জ — জীবনের শ্রেষ্ঠতম সফর</h2>
-      <p class="whisper-quote" style="font-size: 1.4rem;">"সরকারি কোটা ও নুসুক হজ পোর্টাল অনুযায়ী পূর্ণাঙ্গ সহযোগিতা"</p>
+      <h2 class="crisp-gold-bn" style="font-size: 2.5rem;" data-key="hajj_h2">হজ্জ — জীবনের শ্রেষ্ঠতম সফর</h2>
+      <p class="whisper-quote" style="font-size: 1.4rem;" data-key="hajj_quote">"সরকারি কোটা ও নুসুক হজ পোর্টাল অনুযায়ী পূর্ণাঙ্গ সহযোগিতা"</p>
     </div>
 
     <section class="content-section" style="padding-top: 0;">
